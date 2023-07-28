@@ -1,0 +1,858 @@
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+        <div class="align-items-center d-none d-md-flex">
+            <i class="bi bi-clock"></i> {{localizations.workTime[lan]}}
+        </div>
+        <div class="d-flex align-items-center">
+            <i class="bi bi-phone"></i>Call us now {{localizations.callNum1[lan]}}
+        </div>
+    </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top header-initial">
+    <div class="container d-flex align-items-center">
+
+        <a href="index.html" class="logo me-auto"> <img
+                src="{{sections?.logo.images.untitled[0].dir}}{{sections?.logo.images.untitled[0].image}}"></a>
+
+
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <!-- <li><a class="nav-link scrollto " href="#hero">{{localizations.home[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#about">{{localizations.about[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#services">{{localizations.services[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#events">{{localizations.offers[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#faq">{{localizations.faq[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#testimonials">{{localizations.testimonials[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#clients">{{localizations.client[lan]}}</a></li>
+                <li><a class="nav-link scrollto" href="#contact">{{localizations.contact[lan]}}</a></li>
+                <li><a class="nav-link scrollto" routerLink="/login" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">{{localizations.login[lan]}}</a></li>
+                <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li> -->
+                <!-- <li><a class="nav-link scrollto" href="#portfolio">{{localizations.gallery[lan]}}</a></li> -->
+                <li><a class="nav-link scrollto " [routerLink]="['/']" fragment="hero">{{localizations.home[lan]}}</a>
+                </li>
+                <li><a class="nav-link scrollto" [routerLink]="['/']" fragment="about">{{localizations.about[lan]}}</a>
+                </li>
+                <li><a class="nav-link scrollto" [routerLink]="['/']"
+                        fragment="services">{{localizations.services[lan]}}</a></li>
+                <li><a class="nav-link scrollto" [routerLink]="['/']"
+                        fragment="offers">{{localizations.offers[lan]}}</a></li>
+                <li><a class="nav-link scrollto" [routerLink]="['/']" fragment="faq">{{localizations.faq[lan]}}</a></li>
+                <!-- <li><a class="nav-link scrollto" [routerLink]="['/']"
+                        fragment="testimonials">{{localizations.testimonials[lan]}}</a></li> -->
+                <li><a class="nav-link scrollto" [routerLink]="['/']"
+                        fragment="clients">{{localizations.client[lan]}}</a></li>
+                <li><a class="nav-link scrollto" [routerLink]="['/']"
+                        fragment="contact">{{localizations.contact[lan]}}</a></li>
+                <li><a class="nav-link scrollto" routerLink="/login" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">{{localizations.login[lan]}}</a></li>
+                <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li>
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <a href="#booking" class="appointment-btn scrollto"><span>{{localizations.fastbookingbtn[lan]}} </span></a>
+
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators">
+            <li *ngFor="let x of trend; let i = index" [attr.data-bs-slide-to]="i" class='active'
+                style="display: none;"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+
+            <!-- Slide 1 -->
+
+            <div *ngFor="let x of trend;" class="carousel-item active"
+                [style]="'background-image: url(\'' + x.images.untitled[0].dir + x.images.untitled[0].image + '\')'">
+                <div class="container">
+                    <h2>{{x.Title_localized[lan.toLowerCase()]}}</h2>
+                    <p [innerHTML]="x.Text_localized[lan.toLowerCase()]">
+
+                    </p>
+                    <a href="#offers" class="btn-get-started scrollto">{{localizations.goToOffers[lan]}}</a>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <div *ngFor="let x of sections?.featuredServ?.specs[lan]; let i = index"
+                    class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" [attr.data-aos-delay]="(i+1)*100">
+                        <div class="icon"><i class="{{x.Icon}}"></i></div>
+                        <h4 class="title"><a href="">{{x.Name}}</a></h4>
+                        <p class="description">{{x.Value}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= Fast booking Section ======= -->
+    <section id="cta" class="cta">
+        <div class="container" data-aos="zoom-in">
+
+            <div class="text-center">
+                <h3>{{sections?.fastFlight?.Title_localized[lan.toLowerCase()]}}</h3>
+                <p [innerHTML]="sections?.fastFlight?.Text_localized[lan.toLowerCase()]">
+                </p>
+                <a class="cta-btn scrollto" href="#booking"
+                    style="text-decoration: none;">{{localizations.fastbookingbtn[lan]}}</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- End Cta Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>{{sections?.aboutUs?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p>{{sections?.aboutUs?.Brief_localized[lan.toLowerCase()]}}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="{{sections?.aboutUs.images.untitled[0].dir}}{{sections?.aboutUs.images.untitled[0].image}}"
+                        class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+                    <p [innerHTML]="sections?.aboutUs?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Statistics Section ======= -->
+
+
+    <section id="counts" class="counts">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row no-gutters">
+                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
+                    *ngFor="let x of sections?.statistics?.specs[lan]">
+                    <div class="count-box">
+                        <i class="{{x.Icon}}"></i>
+                        <span data-purecounter-start="0" [attr.data-purecounter-end]="x.Value"
+                            data-purecounter-duration="2" class="purecounter">{{x.Value}}</span>
+                        <!-- <p [innerHTML]="x.Name | safeHtml"></p> -->
+                        <p><b>{{x.Name}}</b></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- End Counts Section -->
+
+
+    <!-- ======= Services Section ======= -->
+
+    <section id="services" class="services services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>{{sections?.services?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.services?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100"
+                    *ngFor="let x of sections?.services?.specs[lan]">
+                    <div class="icon"><i class="{{x.Icon}}"></i></div>
+                    <h4 class="title"><a href="">{{x.Name}}</a></h4>
+                    <p class="description">{{x.Value}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= booking Section ======= -->
+    <section id="booking" class="appointment section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>{{sections?.booking?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.booking?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="php-email-form" data-aos="fade-up"
+                data-aos-delay="100">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                            formControlName="name">
+                        <div *ngIf="myForm.get('name')?.invalid && (myForm.get('name')?.dirty || myForm.get('name')?.touched) "
+                            style="color: red;">
+                            <div *ngIf="myForm.get('name')?.errors?.['required']">Name is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                            formControlName="email">
+                        <div *ngIf="myForm.get('email')?.invalid && (myForm.get('email')?.dirty || myForm.get('email')?.touched)"
+                            style="color: red;">
+                            <div *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
+                            <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <label for="phone">Phone number:</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+                            formControlName="phone">
+                        <div *ngIf="myForm.get('phone')?.invalid && (myForm.get('phone')?.dirty || myForm.get('phone')?.touched)"
+                            style="color: red;">
+                            <div *ngIf="myForm.get('phone')?.errors?.['required']">Phone number is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        <label for="from">From:</label>
+                        <input type="text" class="form-control" id="from" placeholder="Enter your starting location"
+                            formControlName="from">
+                        <div *ngIf="myForm.get('from')?.invalid && (myForm.get('from')?.dirty || myForm.get('from')?.touched)"
+                            style="color: red;">
+                            <div *ngIf="myForm.get('from')?.errors?.['required']">Starting location is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <label for="to">To:</label>
+                        <input type="text" class="form-control" id="to" placeholder="Enter your destination"
+                            formControlName="to">
+                        <div *ngIf="myForm.get('to')?.invalid && (myForm.get('to')?.dirty || myForm.get('to')?.touched) "
+                            style="color: red;">
+                            <div *ngIf="myForm.get('to')?.errors?.['required']">Destination is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <label for="travelersNumber">Number of travelers:</label>
+                        <input type="number" class="form-control" id="travelersNumber"
+                            placeholder="Enter the number of travelers" formControlName="travelersNumber">
+                        <div *ngIf="myForm.get('travelersNumber')?.invalid && (myForm.get('travelersNumber')?.dirty || myForm.get('travelersNumber')?.touched) "
+                            style="color: red;">
+                            <div *ngIf="myForm.get('travelersNumber')?.errors?.['required']">Number of travelers
+                                is required.</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4 form-group mt-3">
+                        <div class="form-group">
+                            <label>Ticket Type:</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="one-way" value="one-way" checked
+                                    formControlName="ticketType">
+                                <label class="form-check-label" for="one-way">One-way</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="round-trip" value="round-trip"
+                                    formControlName="ticketType">
+                                <label class="form-check-label" for="round-trip">Round-trip</label>
+                            </div>
+                            <div *ngIf="myForm.get('ticketType')?.invalid && (myForm.get('ticketType')?.dirty || myForm.get('ticketType')?.touched) "
+                                style="color: red;">
+                                <div *ngIf="myForm.get('ticketType')?.errors?.['required']">Ticket type is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <label for="travelDate">Date of Travel:</label>
+                        <input type="date" class="form-control" id="travelDate" formControlName="travelDate"
+                            [min]="getCurrentDate()" (change)="updateReturnDateMin()">
+                        <div *ngIf="myForm.get('travelDate')?.invalid && (myForm.get('travelDate')?.dirty || myForm.get('travelDate')?.touched) "
+                            style="color: red;">
+                            <div *ngIf="myForm.get('travelDate')?.errors?.['required']">Date of travel is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="myForm.get('ticketType')?.value != 'one-way'" class="col-md-4 form-group mt-3"
+                        id="return-date-group">
+                        <label for="returnDate">Return date:</label>
+                        <input type="date" class="form-control" id="returnDate" formControlName="returnDate"
+                            [min]="minReturnDate">
+                        <div *ngIf="myForm.get('returnDate')?.invalid && (myForm.get('returnDate')?.dirty || myForm.get('returnDate')?.touched)"
+                            style="color: red;">
+                            <div *ngIf="myForm.get('returnDate')?.errors?.['required']">Return date is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-4 form-group mt-3">
+                        <div class="form-group">
+                            <label>Added services:</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="car" formControlName="car">
+                                <label class="form-check-label" for="Car">Car</label>
+                            </div>
+                            <div class="form-check form-check-inline checkbox">
+                                <input class="form-check-input" type="checkbox" id="visa" formControlName="visa">
+                                <label class="form-check-label" for="visa">Visa</label>
+                            </div>
+                            <div class="form-check form-check-inline checkbox">
+                                <input class="form-check-input" type="checkbox" id="hotel" formControlName="hotel">
+                                <label class="form-check-label" for="hotel">Hotel</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="myForm.get('hotel')?.value" class="col-md-4 form-group mt-3">
+                        <label for="hotelName">Hotel Name:</label>
+                        <input type="text" class="form-control" id="hotelName"
+                            placeholder="Enter a hotel or place that you prefer (Optional)" formControlName="hotelName">
+
+                    </div>
+
+
+                </div>
+                <div class="form-group mt-3">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+                </div>
+                <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+                </div>
+                <div class="text-center">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section><!-- booking Section -->
+
+    <!-- Offers Sections   -->
+
+    <section id="offers" class="portfolio">
+        <div class="">
+
+            <div class="section-title">
+                <h2>{{sections?.offers?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.offers?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">{{localizations.specials[lan]}}</li>
+                        <!-- <li data-filter=".filter-app">App</li>
+                        <li data-filter=".filter-card">Card</li>
+                        <li data-filter=".filter-web">Web</li> -->
+                        <li *ngFor="let x of offersCats" [attr.data-filter]="'.id-' + x.objectId">
+                            {{x.Name_localized[lan.toLowerCase()]}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+
+                <div *ngFor="let x of allOffers; let i = index"
+                    class="col-lg-4 col-md-6 portfolio-item id-{{x.categories[0].objectId}} {{i > 5 ? 'hideFilter' : ''}}">
+                    <div style="overflow: hidden;">
+                        <img src="{{x.images.untitled[0].dir}}{{x.images.untitled[0].image}}" class="img-fluid" alt="">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>{{x.Title}}</h4>
+                        <div class="price">{{x.Price}}</div>
+                        <p [innerHTML]="x?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+                        <a href="{{x.images.untitled[0].dir}}{{x.images.untitled[0].image}}"
+                            data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                            title="{{x.Title_localized[lan.toLowerCase()]}}"><i class="bx bx-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--End Offers Sections   -->
+
+    <!-- Gallery Section -->
+
+    <!-- <section id="portfolio" class="portfolio">
+      <div class="container">
+  
+        <div class="section-title">
+          <h2>{{sections?.gallery?.Title_localized[lan.toLowerCase()]}}</h2>
+          <p [innerHTML]="sections?.gallery?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+        </div>
+  
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">Bali</li>
+              <li data-filter=".filter-card">Turkey</li>
+              <li data-filter=".filter-web">Thailand</li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="row portfolio-container">
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Bali 1</h4>
+              <p>Bali</p>
+              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Bali 1"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Thailand 3</h4>
+              <p>Thailand</p>
+              <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Thailand 3"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Bali 2</h4>
+              <p>Bali</p>
+              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Bali 2"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Turkey 2</h4>
+              <p>Turkey</p>
+              <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Turkey 2"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Thailand 2</h4>
+              <p>Thailand</p>
+              <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Thailand 2"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Bali 3</h4>
+              <p>Bali</p>
+              <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Bali 3"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Turkey 1</h4>
+              <p>Turkey</p>
+              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Turkey 1"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Turkey 3</h4>
+              <p>Turkey</p>
+              <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Turkey 3"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Thailand 3</h4>
+              <p>Thailand</p>
+              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Thailand 3"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+    </section> -->
+
+    <!-- End Gallery Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+
+    <section id="faq" class="faq section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>{{sections?.questions?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.questions?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+            <ul class="faq-list">
+
+                <li *ngFor="let x of questions; let i = index">
+                    <div data-bs-toggle="collapse" class="collapsed question" [attr.href]=" '#faq' + i ">
+                        <p [innerHTML]="questions[i].Question_localized[lan.toLowerCase()] | safeHtml"></p><i
+                            class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+                    </div>
+                    <div id="faq{{i}}" class="collapse" data-bs-parent=".faq-list">
+                        <p [innerHTML]="questions[i].Answer_localized[lan.toLowerCase()] | safeHtml">
+                        </p>
+                    </div>
+                </li>
+
+                <!-- <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">
+              <p [innerHTML]="questions[1].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+                class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p [innerHTML]="questions[1].Answer_localized[lan.toLowerCase()] | safeHtml">
+              </p>
+            </div>
+          </li>
+  
+          <li>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">
+              <p [innerHTML]="questions[2].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+                class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+              <p [innerHTML]="questions[2].Answer_localized[lan.toLowerCase()] | safeHtml">
+              </p>
+            </div>
+          </li>
+  
+          <li>
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">
+              <p [innerHTML]="questions[3].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+                class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+              <p [innerHTML]="questions[3].Answer_localized[lan.toLowerCase()] | safeHtml">
+              </p>
+            </div>
+          </li>
+  
+          <li>
+            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">
+              <p [innerHTML]="questions[4].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+                class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+              <p [innerHTML]="questions[4].Answer_localized[lan.toLowerCase()] | safeHtml">
+              </p>
+            </div>
+          </li>
+  
+          <li>
+            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">
+              <p [innerHTML]="questions[5].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+                class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+              <p [innerHTML]="questions[5].Answer_localized[lan.toLowerCase()] | safeHtml">
+              </p>
+            </div>
+          </li> -->
+
+            </ul>
+
+        </div>
+    </section><!-- End Frequently Asked Questioins Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <!-- <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>{{sections?.testimonials?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.testimonials?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let x of testimonials">
+                        <div class="testimonial-item">
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                <span [innerHTML]="x.Text_localized[lan.toLowerCase()] | safeHtml"></span>
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <img src="{{x.images.testimonials[0].dir}}{{x.images.testimonials[0].image}}"
+                                class="testimonial-img" alt="">
+                            <h3>{{x.Name_localized[lan.toLowerCase()]}}</h3>
+                            <h4>{{x.positionName_localized[lan.toLowerCase()]}}</h4>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section> -->
+
+    <!-- End testimonial item -->
+
+
+    <!-- End Testimonials Section -->
+
+    <!-- ======= Our Clients Section ======= -->
+    <section id="clients" class="clients">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>{{sections?.clients?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.clients?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+            <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+
+                <div class="col-lg-3 col-md-4 col-6" *ngFor="let x of sections.clients.images.untitled">
+                    <div class="client-logo">
+                        <img src="{{x.dir}}{{x.image}}" class="img-fluid" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Our Clients Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>{{sections?.contact?.Title_localized[lan.toLowerCase()]}}</h2>
+                <p [innerHTML]="sections?.contact?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+            </div>
+
+        </div>
+
+        <div>
+            <iframe style="border:0; width: 100%; height: 350px;"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29000.030601734732!2d46.66601880980515!3d24.692395234523254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f033bb824b417%3A0xdc9745cc4a78b2d2!2sAl%20Olaya%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2slb!4v1676907009995!5m2!1sen!2slb"
+                frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="container">
+
+            <div class="row mt-5">
+
+                <div class="col-lg-6">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="info-box">
+                                <i class="bx bx-map"></i>
+                                <h3>Our Address</h3>
+                                <p>Olaya Street, Al Riad, Saudi Arabia kingdoom</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mt-4">
+                                <i class="bx bx-envelope"></i>
+                                <h3>Email Us</h3>
+                                <p>info@takeoff.com<br>contact@takeoff.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mt-4">
+                                <i class="bx bx-phone-call"></i>
+                                <h3>Call Us</h3>
+                                <p>{{localizations.callNum1[lan]}}<br>{{localizations.callNum2[lan]}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit2()" class="php-email-form">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="contactName" placeholder="Your Name"
+                                    formControlName="contactName">
+                                <div *ngIf="contactForm.get('contactName')?.invalid && (contactForm.get('contactName')?.dirty || contactForm.get('contactName')?.touched)"
+                                    style="color: red;">
+                                    <div *ngIf="contactForm.get('contactName')?.errors?.['required']">Name is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <input type="email" class="form-control" id="contactEmail" placeholder="Your Email"
+                                    formControlName="contactEmail">
+                                <div *ngIf="contactForm.get('contactEmail')?.invalid && (contactForm.get('contactEmail')?.dirty || contactForm.get('contactEmail')?.touched)"
+                                    style="color: red;">
+                                    <div *ngIf="contactForm.get('contactEmail')?.errors?.['required']">Email is
+                                        required.
+                                    </div>
+                                    <div *ngIf="contactForm.get('contactEmail')?.errors?.['email']">Invalid email
+                                        format.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" id="contactSubject" placeholder="Subject"
+                                formControlName="contactSubject">
+                            <div *ngIf="contactForm.get('contactSubject')?.invalid && (contactForm.get('contactSubject')?.dirty || contactForm.get('contactSubject')?.touched)"
+                                style="color: red;">
+                                <div *ngIf="contactForm.get('contactSubject')?.errors?.['required']">Subject is
+                                    required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea class="form-control" id="contactMessage" rows="7" placeholder="Message"
+                                formControlName="contactMessage"></textarea>
+                            <div *ngIf="contactForm.get('contactMessage')?.invalid && (contactForm.get('contactMessage')?.dirty || contactForm.get('contactMessage')?.touched)"
+                                style="color: red;">
+                                <div *ngIf="contactForm.get('contactMessage')?.errors?.['required']">Message is
+                                    required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit">{{localizations.sendmsgbtn[lan]}}</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+
+    <div class="container">
+        <div class="row gy-3">
+            <div class="col-lg-3 col-md-6 d-flex">
+                <i class="bi bi-geo-alt icon"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>
+                        Olaya Street <br>
+                        Al Riad, Saudi Arabia kingdoom<br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-telephone icon"></i>
+                <div>
+                    <h4>For booking</h4>
+                    <p>
+                        <strong>Phone:</strong> {{localizations.callNum1[lan]}}<br>
+                        <strong>Email:</strong> contact@takeoff.com<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p>
+                        <strong>{{localizations.workTime[lan]}}</strong><br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Follow Us</h4>
+                <div class="social-links d-flex">
+
+
+                    <a *ngFor="let x of sections?.contact?.specs?.En" href="{{x.Value}}" class="{{x.Name}}"
+                        target="_blank"><i class="{{x.Icon}}"></i></a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Takeoff</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            Powered by <a href="">Greenera</a>
+        </div>
+    </div>
+
+</footer><!-- End Footer -->
+
+<div id="preloader" style="display: none;"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
