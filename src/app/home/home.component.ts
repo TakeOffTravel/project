@@ -122,10 +122,9 @@ export class HomeComponent implements OnInit {
   localizations: any = [];
   // read language from cookie if exist, otherwise, its En
   lan: any = this.dbService.getCookie("language") ? this.dbService.getCookie("language") : "En";
-  changeLanguage() {
+  changeLanguage(l: any) {
     let oldLan = this.lan;
-    if (this.lan == 'En') this.lan = 'Ar';
-    else this.lan = 'En';
+    this.lan = l;
     document.querySelector('body')?.classList.remove(oldLan);
     document.querySelector('body')?.classList.add(this.lan);
 

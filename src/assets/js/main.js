@@ -157,15 +157,7 @@ setTimeout(() => {
       }
     });
 
-    /**
-     * Preloader
-     */
-    // let preloader = select('#preloader');
-    // if (preloader) {
-    //   window.addEventListener('load', () => {
-    //     preloader.remove()
-    //   });
-    // }
+
 
     setTimeout(() => {
       AOS.init({
@@ -176,19 +168,6 @@ setTimeout(() => {
       })
     }, 1000);
 
-
-    /**
-  * Hero carousel indicators
-  */
-
-    // let heroCarouselIndicators = select("#hero-carousel-indicators")
-    // let heroCarouselItems = select('#heroCarousel .carousel-item', true)
-
-    // heroCarouselItems.forEach((item, index) => {
-    //   (index === 0) ?
-    //     heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>" :
-    //     heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
-    // });
 
 
     let heroCarouselIndicators = document.querySelector("#hero-carousel-indicators");
@@ -354,61 +333,6 @@ setTimeout(() => {
       }, true);
     }
 
-    // });
-
-    /**
-         * for change the bottum in the navbar 
-         */
-
-    // const langSwitcher = document.getElementById('lang-switcher');
-    // let currentLang = 'ar';
-
-    // langSwitcher.addEventListener('click', function (e) {
-    //   e.preventDefault();
-    //   if (currentLang === 'ar') {
-    //     langSwitcher.textContent = 'En';
-    //     currentLang = 'en';
-    // call a function to switch the language to English
-    // } else {
-    //   langSwitcher.textContent = 'Ar';
-    //   currentLang = 'ar';
-    // call a function to switch the language to Arabic
-    //   }
-    // });
-
-    // Set the current language to English.
-    // let currentLanguage = 'en';
-
-    // Add a click event listener to the English link.
-    // enLink.addEventListener('click', function (e) {
-    //   e.preventDefault();
-    // Only switch language if the user clicked on a different link.
-    // if (currentLanguage !== 'en') {
-    //   currentLanguage = 'en';
-    // Call a function to switch the language on the page.
-    // For example:
-    // switchLanguage('en');
-    // Add the active class to the English link and remove it from the Arabic link.
-    //     enLink.classList.add('active');
-    //     arLink.classList.remove('active');
-    //   }
-    // });
-
-    // Add a click event listener to the Arabic link.
-    // arLink.addEventListener('click', function (e) {
-    //   e.preventDefault();
-    // Only switch language if the user clicked on a different link.
-    // if (currentLanguage !== 'ar') {
-    //   currentLanguage = 'ar';
-    // Call a function to switch the language on the page.
-    // For example:
-    // switchLanguage('ar');
-    // Add the active class to the Arabic link and remove it from the English link.
-    //     arLink.classList.add('active');
-    //     enLink.classList.remove('active');
-    //   }
-    // });
-
 
 
 
@@ -438,17 +362,6 @@ setTimeout(() => {
     });
 
 
-    /**
- * return trip
- */
-
-    // const travelDateInput = document.getElementById('travel-date');
-    // const arrivalDateInput = document.getElementById('arrival-date');
-
-    // travelDateInput.addEventListener('change', (event) => {
-    //   const travelDateValue = event.target.value;
-    //   arrivalDateInput.min = travelDateValue;
-    // });
 
 
     /**
@@ -467,30 +380,13 @@ setTimeout(() => {
         }
       })
     }
-    /**
-     * Animation on scroll
-     */
-    // window.addEventListener('load', () => {
-    //   isLoaded = true;
-    //   AOS.init({
-    //     duration: 1000,
-    //     easing: 'ease-in-out',
-    //     once: true,
-    //     mirror: false
-    //   })
-    // });
-
-    // let isPureCounter = false;
-    // let section = document.querySelector("#counts");
-    // window.onscroll = function () {
-    //   if (window.scrollY >= section.offsetTop - 100 && !isPureCounter) {
-    //     isPureCounter = true;
-    //     new PureCounter();
-    //   }
-    // };
 
 
-    // new PureCounter();
+
+
+
+
+
     /**
        * Animation on scroll function and init
        */
@@ -510,3 +406,5 @@ setTimeout(() => {
   })()
 
 }, 1000);
+
+

@@ -116,6 +116,20 @@ h6 {
 /*--------------------------------------------------------------
 # Top Bar
 --------------------------------------------------------------*/
+
+/* CSS to style the WhatsApp link */
+.whatsapp-link {
+  color: #ffffff;
+  /* Set the color to white */
+  text-decoration: none;
+  /* Remove underline */
+}
+
+.whatsapp-link:hover {
+  opacity: 0.8;
+  /* Add a slight opacity on hover to indicate interactivity, if desired */
+}
+
 #topbar {
   background: #3fbbc0;
   color: #fff;
@@ -184,9 +198,11 @@ h6 {
 
 @media (max-width: 1450px) {
   #header .logo img {
-    margin-left: -40px;
+    margin-left: -10px;
   }
 }
+
+
 
 /**
 * Appointment Button
@@ -200,7 +216,6 @@ h6 {
   white-space: nowrap;
   transition: 0.3s;
   font-size: 14px;
-  display: inline-block;
 }
 
 .appointment-btn:hover {
@@ -208,13 +223,13 @@ h6 {
   color: #fff;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .appointment-btn {
-    /* margin: 0 15px 0 0; */
+    margin: 0 15px 0 0;
     padding: 6px 10px;
     font-size: 9px;
   }
-}
+} */
 
 section.portfolio .portfolio-container {
   min-height: 300px !important;
@@ -263,7 +278,7 @@ section.portfolio .portfolio-container .fullImage img {
 */
 .navbar {
   padding: 0;
-  margin-left: 100px;
+  margin-left: 15px;
 }
 
 .navbar ul {
@@ -394,9 +409,9 @@ body.Ar .navbar a:focus {
   color: #fff;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 991px) {
   .mobile-nav-toggle {
-    display: block;
+    display: inline-block;
   }
 
   .navbar ul {
@@ -423,15 +438,17 @@ body.Ar .navbar a:focus {
 }
 
 .navbar-mobile ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 55px;
-  right: 15px;
+  right: 185px;
   bottom: 15px;
-  left: 15px;
+  left: 185px;
   padding: 10px 0;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
+
   overflow-y: auto;
   transition: 0.3s;
 }
@@ -455,7 +472,7 @@ body.Ar .navbar a:focus {
   margin: 10px 20px;
   padding: 10px 0;
   z-index: 99;
-  opacity: 1;
+  opacity: 1.5;
   visibility: visible;
   background: #fff;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
@@ -482,6 +499,163 @@ body.Ar .navbar a:focus {
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
+
+
+#oldbtn {
+  display: inline-block;
+}
+
+/* Default button style for screens narrower than 1200px */
+#newbtn {
+  display: none;
+}
+
+.lan {
+  margin-left: 32px;
+  cursor: pointer;
+
+}
+
+.lan a:hover,
+.lan .active,
+.lan .active:focus,
+.lan li:hover>a {
+  color: #3fbbc0;
+
+}
+
+
+@media (max-width: 1200px) {
+
+  .navbar a,
+  .navbar a:focus {
+
+    font-size: 16px !important;
+    padding: 10px 0 10px 13px;
+  }
+
+
+  #oldbtn {
+    display: none;
+  }
+
+  #newbtn {
+    display: inline-block;
+    margin-left: 3px;
+
+  }
+
+  .lan {
+    margin-left: 2px;
+
+  }
+
+
+
+
+  body.Ar .navbar a,
+  body.Ar .navbar a:focus {
+    font-size: 20px !important;
+    padding: 10px 0 10px 20px;
+
+  }
+
+}
+
+
+@media (max-width: 992px) {
+
+  body.Ar .navbar a,
+  body.Ar .navbar a:focus {
+    margin-top: 30px;
+    font-weight: bold;
+    padding: 10px 0 10px 0px;
+  }
+
+
+
+  .navbar a,
+  .navbar a:focus {
+
+    font-size: 16px !important;
+    padding: 10px 0px 10px 0px;
+  }
+
+
+  #oldbtn {
+    display: none;
+  }
+
+  #newbtn {
+    display: inline-block;
+    margin-left: 3px;
+
+  }
+
+  .lan {
+    margin-left: 2px;
+
+  }
+
+
+
+
+  body.Ar .navbar a,
+  body.Ar .navbar a:focus {
+    font-size: 20px !important;
+
+  }
+
+
+
+
+  .navbar a,
+  .navbar a:focus {
+
+    margin-top: 27px;
+    font-weight: bold;
+
+  }
+
+}
+
+@media (max-width: 992px) {
+
+  .navbar-mobile ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 55px;
+    right: 185px;
+    bottom: 15px;
+    left: 185px;
+    padding: 10px 0;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    overflow-y: auto;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .navbar-mobile ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 55px;
+    right: 100px;
+    bottom: 15px;
+    left: 100px;
+    padding: 10px 0;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    overflow-y: auto;
+    transition: 0.3s;
+  }
+}
+
+
 
 /*--------------------------------------------------------------
 # Hero Section

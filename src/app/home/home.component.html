@@ -5,7 +5,11 @@
             <i class="bi bi-clock"></i> {{localizations.workTime[lan]}}
         </div>
         <div class="d-flex align-items-center">
-            <i class="bi bi-phone"></i>Call us now {{localizations.callNum1[lan]}}
+            <i class="bi bi-whatsapp"></i>Chat with us on &nbsp;<a href="https://wa.me/966544239000"
+                class="whatsapp-link" target="_blank">
+                +966
+                54
+                423 9000</a>
         </div>
     </div>
 </div>
@@ -18,23 +22,10 @@
                 src="{{sections?.logo.images.untitled[0].dir}}{{sections?.logo.images.untitled[0].image}}"></a>
 
 
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
         <nav id="navbar" class="navbar order-last order-lg-0">
+
             <ul>
-                <!-- <li><a class="nav-link scrollto " href="#hero">{{localizations.home[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#about">{{localizations.about[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#services">{{localizations.services[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#events">{{localizations.offers[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#faq">{{localizations.faq[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#testimonials">{{localizations.testimonials[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#clients">{{localizations.client[lan]}}</a></li>
-                <li><a class="nav-link scrollto" href="#contact">{{localizations.contact[lan]}}</a></li>
-                <li><a class="nav-link scrollto" routerLink="/login" routerLinkActive="active"
-                        ariaCurrentWhenActive="page">{{localizations.login[lan]}}</a></li>
-                <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li> -->
-                <!-- <li><a class="nav-link scrollto" href="#portfolio">{{localizations.gallery[lan]}}</a></li> -->
                 <li><a class="nav-link scrollto " [routerLink]="['/']" fragment="hero">{{localizations.home[lan]}}</a>
                 </li>
                 <li><a class="nav-link scrollto" [routerLink]="['/']" fragment="about">{{localizations.about[lan]}}</a>
@@ -52,13 +43,28 @@
                         fragment="contact">{{localizations.contact[lan]}}</a></li>
                 <li><a class="nav-link scrollto" routerLink="/login" routerLinkActive="active"
                         ariaCurrentWhenActive="page">{{localizations.login[lan]}}</a></li>
-                <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li>
+                <!-- <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li> -->
 
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
 
-        <a href="#booking" class="appointment-btn scrollto"><span>{{localizations.fastbookingbtn[lan]}} </span></a>
+        <div class="nav-btn" style="text-align: center; position: relative;">
+            <div class="lan">
+                <span class="{{lan == 'En' ? 'active' : ''}}" (click)="changeLanguage('En')">En</span>
+                <span style="margin-left: 5px; margin-right: 5px;">|</span>
+                <span class="{{lan == 'Ar' ? 'active' : ''}}" (click)="changeLanguage('Ar')">Ar</span>
+            </div>
+            <div class="btn">
+                <a href="#booking" id="oldbtn"
+                    class="appointment-btn scrollto"><span>{{localizations.fastbookingbtn[lan]}}
+                    </span></a>
+
+                <a href="#booking" id="newbtn"
+                    class="appointment-btn scrollto"><span>{{localizations.fastbookingbtnnew[lan]}}
+                    </span></a>
+            </div>
+        </div>
 
     </div>
 </header><!-- End Header -->
