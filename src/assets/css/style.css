@@ -506,9 +506,9 @@ body.Ar .navbar a:focus {
 }
 
 /* Default button style for screens narrower than 1200px */
-#newbtn {
+/* #newbtn {
   display: none;
-}
+} */
 
 .lan {
   margin-left: 32px;
@@ -534,7 +534,7 @@ body.Ar .navbar a:focus {
     padding: 10px 0 10px 13px;
   }
 
-
+  /* 
   #oldbtn {
     display: none;
   }
@@ -543,7 +543,7 @@ body.Ar .navbar a:focus {
     display: inline-block;
     margin-left: 3px;
 
-  }
+  } */
 
   .lan {
     margin-left: 2px;
@@ -581,7 +581,7 @@ body.Ar .navbar a:focus {
     padding: 10px 0px 10px 0px;
   }
 
-
+  /* 
   #oldbtn {
     display: none;
   }
@@ -590,7 +590,7 @@ body.Ar .navbar a:focus {
     display: inline-block;
     margin-left: 3px;
 
-  }
+  } */
 
   .lan {
     margin-left: 2px;

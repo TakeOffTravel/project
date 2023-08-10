@@ -2,14 +2,14 @@
 <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
         <div class="align-items-center d-none d-md-flex">
-            <i class="bi bi-clock"></i> {{localizations.workTime[lan]}}
+            <i class="{{sections?.topbar?.specs.En[1].Icon}}"></i>
+            {{sections?.topbar?.Title_localized[lan.toLowerCase()]}}
         </div>
         <div class="d-flex align-items-center">
-            <i class="bi bi-whatsapp"></i>Chat with us on &nbsp;<a href="https://wa.me/966544239000"
-                class="whatsapp-link" target="_blank">
-                +966
-                54
-                423 9000</a>
+            <i
+                class="{{sections?.topbar?.specs.En[0].Icon}}"></i>{{sections?.topbar?.Text_localized[lan.toLowerCase()]}}
+            &nbsp;<a href="{{sections?.topbar?.specs.En[0].Value}}" class="whatsapp-link" target="_blank">
+                {{sections?.topbar?.specs.En[0].Name}}</a>
         </div>
     </div>
 </div>
@@ -41,8 +41,8 @@
                         fragment="clients">{{localizations.client[lan]}}</a></li>
                 <li><a class="nav-link scrollto" [routerLink]="['/']"
                         fragment="contact">{{localizations.contact[lan]}}</a></li>
-                <li><a class="nav-link scrollto" routerLink="/login" routerLinkActive="active"
-                        ariaCurrentWhenActive="page">{{localizations.login[lan]}}</a></li>
+                <!-- <li><a class="nav-link scrollto" routerLink="/login" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">{{localizations.login[lan]}}</a></li> -->
                 <!-- <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li> -->
 
             </ul>
@@ -56,13 +56,13 @@
                 <span class="{{lan == 'Ar' ? 'active' : ''}}" (click)="changeLanguage('Ar')">Ar</span>
             </div>
             <div class="btn">
-                <a href="#booking" id="oldbtn"
+                <a href="#offers" id="oldbtn"
                     class="appointment-btn scrollto"><span>{{localizations.fastbookingbtn[lan]}}
                     </span></a>
 
-                <a href="#booking" id="newbtn"
+                <!-- <a href="#booking" id="newbtn"
                     class="appointment-btn scrollto"><span>{{localizations.fastbookingbtnnew[lan]}}
-                    </span></a>
+                    </span></a> -->
             </div>
         </div>
 
@@ -711,21 +711,21 @@
                             <div class="info-box">
                                 <i class="bx bx-map"></i>
                                 <h3>Our Address</h3>
-                                <p>Olaya Street, Al Riad, Saudi Arabia kingdoom</p>
+                                <p [innerHTML]="localizations.address[lan]"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box mt-4">
                                 <i class="bx bx-envelope"></i>
                                 <h3>Email Us</h3>
-                                <p>info@takeoff.com<br>contact@takeoff.com</p>
+                                <p>{{localizations.email1[lan]}}<br>{{localizations.email2[lan]}}</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box mt-4">
                                 <i class="bx bx-phone-call"></i>
                                 <h3>Call Us</h3>
-                                <p>{{localizations.callNum1[lan]}}<br>{{localizations.callNum2[lan]}}</p>
+                                <p>{{localizations.Num1[lan]}}<br>{{localizations.Num2[lan]}}</p>
                             </div>
                         </div>
                     </div>
@@ -806,8 +806,7 @@
                 <div>
                     <h4>Address</h4>
                     <p>
-                        Olaya Street <br>
-                        Al Riad, Saudi Arabia kingdoom<br>
+                        {{localizations.address[lan]}}
                     </p>
                 </div>
 
@@ -818,8 +817,8 @@
                 <div>
                     <h4>For booking</h4>
                     <p>
-                        <strong>Phone:</strong> {{localizations.callNum1[lan]}}<br>
-                        <strong>Email:</strong> contact@takeoff.com<br>
+                        <strong>Phone:</strong> {{localizations.Num1[lan]}}<br>
+                        <strong>Email:</strong> {{localizations.email1[lan]}}<br>
                     </p>
                 </div>
             </div>
@@ -829,7 +828,7 @@
                 <div>
                     <h4>Opening Hours</h4>
                     <p>
-                        <strong>{{localizations.workTime[lan]}}</strong><br>
+                        <strong>{{sections?.topbar?.Title_localized[lan.toLowerCase()]}}</strong><br>
                     </p>
                 </div>
             </div>
