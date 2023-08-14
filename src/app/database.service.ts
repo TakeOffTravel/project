@@ -164,8 +164,8 @@ export class DatabaseService {
 
 
 
-        console.log('sections:', data[2]);
         this.data.sections = data[2].results;
+        console.log('sections:', data[2]);
 
 
         // Make specs Arabic and english

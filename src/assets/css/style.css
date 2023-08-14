@@ -700,7 +700,7 @@ body.Ar .navbar a:focus {
 
 #hero .container {
   text-align: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.6);
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 50px;
@@ -1988,7 +1988,7 @@ section {
 
 .clients .client-logo img {
   transition: all 0.3s ease-in-out;
-  height: 36px;
+  height: 115px;
   filter: grayscale(100%);
 }
 
