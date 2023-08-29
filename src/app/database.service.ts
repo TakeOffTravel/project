@@ -29,7 +29,7 @@ export class DatabaseService {
   }
 
   api(path: String, method: String, obj: any): Promise<Response> {
-    let p = 'https://beaapis.com/1' + path;
+    let p = 'https://www.beaapis.com:29473/1' + path;
     method = method.toUpperCase();
     if (method == 'GET') {
       obj = this.queryStringEncode(obj);
@@ -213,30 +213,11 @@ export class DatabaseService {
 
         this.data.allOffers = data[4].results;
         this.data.offers = data[4].results;
-        // console.log('allOffers', this.data.allOffers)
-
-        // setTimeout(() => {
-        //   let s = `new Swiper('.slides-3', {
-        //   speed: 600,
-        //   lazy: true, 
-        //   loop: false,
-        //   slidesPerView: 3,
-        //   pagination: {
-        //     el: '.swiper-pagination',
-        //     type: 'bullets',
-        //     clickable: true
-        //   }
-        // });`;
-        //   this.data.offSwiper = eval(s);
-        // }, 1000);
 
 
 
         this.data.offersCats = data[5].results;
-        // console.log('offersCats', this.data.offersCats)
-        // End
 
-        // console.log('Trend:', data[6]);
         this.data.trend = data[6].results;
 
         this.changeData(this.data);
@@ -248,17 +229,6 @@ export class DatabaseService {
           }, 500)
         }, 500)
 
-        // setTimeout(() => {
-        //   let offersCats: any = document.querySelectorAll("#event-flters li");
-        //   for (const o of offersCats) {
-        //     o.addEventListener('click', function () {
-        //       for (const o of offersCats) {
-        //         o.classList.remove('filter-active');
-        //       }
-        //       o.classList.add('filter-active');
-        //     })
-        //   }
-        // }, 500)
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -282,71 +252,6 @@ export class DatabaseService {
     console.log(this.data.lan)
   }
 
-
-  // changeImages(cat_id: any) {
-  //   this.data.offSwiper.destroy();
-  //   let temp = [];
-  //   if (cat_id == 'all') temp = this.data.allOffers;
-  //   else {
-  //     temp = [];
-  //     for (let i = 0; i < this.data.allOffers.length; i++) {
-  //       const element = this.data.allOffers[i];
-  //       if (element.categories[0].objectId == cat_id) {
-  //         temp.push(element);
-  //       }
-  //     }
-  //   }
-
-
-  //   let xx = `new Swiper('.slides-3', {
-  //   speed: 600,
-  //   lazy: true,
-  //   loop: false,
-  //   autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: true
-  //   },
-  //   slidesPerView: 'auto',
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //     type: 'bullets',
-  //     clickable: true
-  //   },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  //   breakpoints: {
-  //     320: {
-  //       slidesPerView: 1,
-  //       spaceBetween: 40
-  //     },
-
-  //     1200: {
-  //       slidesPerView: ${temp.length < 3 ? temp.length : 3},
-  //     }
-  //   }
-  // });`
-  //   this.data.offSwiper = eval(xx);
-  //   this.data.offers = temp;
-  //   setTimeout(() => {
-  //     this.data.offSwiper.destroy();
-  //     this.data.offSwiper = eval(xx);
-
-  //     let slides = document.querySelectorAll('.slides-3 .swiper-slide');
-  //     for (let i = 0; i < slides.length; i++) {
-  //       let s: any = slides[i];
-  //       if (!s.style.backgroundImage) {
-  //         s.style.backgroundImage = "url('" + this.data.offers[i].images.untitled[0].dir + this.data.offers[i].images.untitled[0].image + "')";
-  //       }
-  //     }
-  //   }, 50);
-  //   console.log("hiii", this.data.offers);
-  // }
-
-  // transform(url: any) {
-  //   return this.data.sanitizer.bypassSecurityTrustResourceUrl(url);
-  // }
 
 
   // functions related to cookies

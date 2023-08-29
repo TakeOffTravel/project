@@ -10,6 +10,9 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 
 export class AppComponent implements OnInit {
+    title(title: any) {
+        throw new Error('Method not implemented.');
+    }
     constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {
