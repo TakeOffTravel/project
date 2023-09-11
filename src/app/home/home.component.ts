@@ -78,19 +78,29 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    console.log("Foorm", this.myForm)
     if (this.myForm.invalid) {
-      // Mark all form controls as touched to trigger validation messages
       Object.values(this.myForm.controls).forEach((control: AbstractControl) => {
         control.markAsTouched();
       });
-      return;
-    }
-    else {
-      alert("ok1");
-    }
+    } else {
+      // Collect form data
+      const formData = this.myForm.value;
 
+      // Call the sendEmail function from the DatabaseService with the form data
+      this.dbService.sendEmail(formData).subscribe(
+        (response) => {
+          console.log('Email sent successfully', response);
+          // Handle success, e.g., show a success message to the user
+        },
+        (error) => {
+          console.error('Error sending email', error);
+          // Handle error, e.g., show an error message to the user
+        }
+      );
+    }
   }
+
+
 
   onSubmit2() {
     this.submitted = true;

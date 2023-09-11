@@ -1,6 +1,6 @@
 import { Injectable, SimpleChanges } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class DatabaseService {
   private allData = new BehaviorSubject<any>(this.data);
   myData = this.allData.asObservable();
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.getSections();
   }
 
@@ -234,6 +234,85 @@ export class DatabaseService {
         console.error('Error:', error);
       });
   }
+
+  sendEmail(formData: any): Observable<any> {
+    return new Observable((observer) => {
+      console.log("SENDING EMAIL");
+
+      this.api('/_Emails', 'GET', {
+        "where": {
+          "Username": "info@gythan.com"
+        },
+        "fields": "Username,IncomingMS,OutgoingMS,IMAPPort,POP3,SMTP,Password"
+      })
+        .then(p => p.json())
+        .then(res => {
+          console.log('Sent:', res);
+          let d = {
+            "token": res.results[0].token,
+            "to": [
+              {
+                "name": "TakeOff",
+                "email": "ahmadadra28@gmail.com"
+              }
+            ],
+            "body": this.constructEmailBody(formData),
+            "altbody": "Alt Body",
+            "subject": "Testing Subject",
+            "sender": "TakeOff",
+            "priority": 1,
+            "replyto": [
+              {
+                "name": "TakeOff",
+                "email": "ahmadadra28@gmail.com"
+              }
+            ]
+          }
+
+          console.log("BEFORE SENDING", d);
+
+          this.api("/_Emails/send", "POST", d)
+            .then(p => p.json())
+            .then(response => {
+              console.log('BEFORE EMail:', response.results[0]);
+              // Assuming your API response contains data you want to emit
+              observer.next(response);
+              observer.complete();
+            })
+            .catch(error => {
+              observer.error(error);
+            });
+        })
+        .catch(error => {
+          observer.error(error);
+        });
+    });
+  }
+
+  private constructEmailBody(formData: any): string {
+    // Create an HTML email body with form field values
+    const body = `
+      <div>
+        <p>Name: ${formData.name}</p>
+        <p>Email: ${formData.email}</p>
+        <p>Phone: ${formData.phone}</p>
+        <p>From: ${formData.from}</p>
+        <p>To: ${formData.to}</p>
+        <p>Ticket Type: ${formData.ticketType}</p>
+        <p>Number of Travelers: ${formData.travelersNumber}</p>
+        <p>Date of Travel: ${formData.travelDate}</p>
+        <p>Return Date: ${formData.returnDate}</p>
+        <p>Added Services: ${formData.car ? 'Car' : ''} ${formData.visa ? 'Visa' : ''} ${formData.hotel ? 'Hotel' : ''}</p>
+        <p>Hotel Name: ${formData.hotelName}</p>
+        <p>Message: ${formData.message}</p>
+      </div>
+    `;
+
+    return body;
+  }
+
+
+
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
