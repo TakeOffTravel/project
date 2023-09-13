@@ -2605,3 +2605,39 @@ section {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
+
+/* Custom styles for the success toast */
+.toast {
+  /* ... (previous styles) */
+  text-align: center;
+  /* Center text horizontally */
+  display: flex;
+  /* Use flexbox for vertical centering */
+  align-items: center;
+  /* Center text vertically */
+  background-color: #3fbbc0 !important;
+  /* Background color */
+  color: white !important;
+  /* Text color */
+  padding: 20px;
+  /* Increase padding as needed */
+  font-size: 25px !important;
+  /* Increase font size as needed */
+  font-weight: bold;
+  /* Make the text bold */
+  border-radius: 5px;
+
+  position: fixed;
+  /* Position it absolutely */
+  top: 50%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
+  transform: translate(-50%, -50%);
+  /* Translate it to center */
+  z-index: 9999;
+  /* Adjust the z-index as needed */
+
+
+
+}

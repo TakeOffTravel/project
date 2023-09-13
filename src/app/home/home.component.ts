@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       from: ['', Validators.required],
       to: ['', Validators.required],
       ticketType: ['one-way', Validators.required],
-      travelersNumber: [1, Validators.required],
+      travelersNumber: ['', Validators.required],
       travelDate: ['', Validators.required],
       returnDate: [''],
       car: [false],
@@ -76,45 +76,135 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.submitted) {
+      return; // Prevent multiple submissions
+    }
     this.submitted = true;
 
     if (this.myForm.invalid) {
       Object.values(this.myForm.controls).forEach((control: AbstractControl) => {
         control.markAsTouched();
       });
+      this.submitted = false; // Re-enable the submit button
+      return;
+
     } else {
+
       // Collect form data
       const formData = this.myForm.value;
+
+      // Disable the submit button
+      const submitButton = document.getElementById('submit-button');
+      if (submitButton) {
+        submitButton.setAttribute('disabled', 'true');
+      }
+
 
       // Call the sendEmail function from the DatabaseService with the form data
       this.dbService.sendEmail(formData).subscribe(
         (response) => {
-          console.log('Email sent successfully', response);
+          // Reset the form
+          const ticketTypeValue = this.myForm.get('ticketType')?.value;
+          this.showSuccessMessage();
+          this.myForm.reset();
+          this.myForm.get('ticketType')?.setValue(ticketTypeValue);
+          this.submitted = false;
+          if (submitButton) {
+            submitButton.removeAttribute('disabled');
+          }
+
           // Handle success, e.g., show a success message to the user
+
         },
         (error) => {
           console.error('Error sending email', error);
-          // Handle error, e.g., show an error message to the user
+          this.ErrorMessage();
+          // Re-enable the submit button immediately in case of an error
+          if (submitButton) {
+            submitButton.removeAttribute('disabled');
+          }
+
         }
       );
     }
   }
 
+  showSuccessMessage() {
+    // Create a styled success message
+    const toast = document.createElement('div');
+    toast.className = 'toast show';
+    toast.textContent = 'Email sent successfully';
+    document.body.appendChild(toast);
+
+    // Remove the toast notification after a few seconds (adjust as needed)
+    setTimeout(() => {
+      document.body.removeChild(toast);
+    }, 4000);
+  }
+
+
+  ErrorMessage() {
+    // Create a styled success message
+    const toast = document.createElement('div');
+
+    toast.className = 'toast show';
+    toast.textContent = 'Error sending email, try again';
+    this.submitted = false;
+  }
+
+
 
 
   onSubmit2() {
+
+    if (this.submitted) {
+      return; // Prevent multiple submissions
+    }
+
     this.submitted = true;
 
-    console.log("Foorm", this.contactForm)
     if (this.contactForm.invalid) {
       // Mark all form controls as touched to trigger validation messages
       Object.values(this.contactForm.controls).forEach((control: AbstractControl) => {
         control.markAsTouched();
       });
+      this.submitted = false; // Re-enable the submit button
       return;
+
     }
     else {
-      alert("ok2");
+      // Collect form data
+      const formData2 = this.contactForm.value;
+      // Disable the submit button
+      const submitButton = document.getElementById('submit-button');
+      if (submitButton) {
+        submitButton.setAttribute('disabled', 'true');
+      }
+
+      // Call the sendEmail function from the DatabaseService with the form data
+      this.dbService.sendEmail2(formData2).subscribe(
+        (response) => {
+          console.log('Email sent successfully', response);
+          // Handle success, e.g., show a success message to the user
+          this.showSuccessMessage();
+          this.contactForm.reset();
+          this.submitted = false;
+
+          // Re-enable the submit button
+          if (submitButton) {
+            submitButton.removeAttribute('disabled');
+          }
+
+        },
+        (error) => {
+          console.error('Error sending email', error);
+          this.ErrorMessage();
+          // Re-enable the submit button immediately in case of an error
+          if (submitButton) {
+            submitButton.removeAttribute('disabled');
+          }
+        }
+      );
     }
 
 

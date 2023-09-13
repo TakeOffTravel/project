@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseService } from '../app/database.service';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DatabaseService } from '../app/database.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [DatabaseService],
   bootstrap: [AppComponent]

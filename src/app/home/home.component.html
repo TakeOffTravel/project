@@ -248,7 +248,7 @@
                     </div>
                     <div class="col-md-4 form-group mt-3 mt-md-0">
                         <label for="phone">Phone number:</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+                        <input type="number" class="form-control" id="phone" placeholder="Enter your phone number"
                             formControlName="phone">
                         <div *ngIf="myForm.get('phone')?.invalid && (myForm.get('phone')?.dirty || myForm.get('phone')?.touched)"
                             style="color: red;">
@@ -362,7 +362,8 @@
 
                 </div>
                 <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+                    <textarea formControlName="message" class="form-control" name="message" rows="5"
+                        placeholder="Message (Optional)"></textarea>
                 </div>
                 <div class="my-3">
                     <div class="loading">Loading</div>

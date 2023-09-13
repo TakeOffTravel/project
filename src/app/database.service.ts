@@ -29,7 +29,7 @@ export class DatabaseService {
   }
 
   api(path: String, method: String, obj: any): Promise<Response> {
-    let p = 'https://www.beaapis.com:29473/1' + path;
+    let p = 'https://www.beaapis.com/1' + path;
     method = method.toUpperCase();
     if (method == 'GET') {
       obj = this.queryStringEncode(obj);
@@ -252,21 +252,16 @@ export class DatabaseService {
             "token": res.results[0].token,
             "to": [
               {
-                "name": "TakeOff",
-                "email": "ahmadadra28@gmail.com"
+                "name": "TakeOff Travel & Events",
+                "email": "sales@takeoff.com.sa"
               }
             ],
             "body": this.constructEmailBody(formData),
             "altbody": "Alt Body",
-            "subject": "Testing Subject",
-            "sender": "TakeOff",
+            "subject": "Ticket Needed",
+            "sender": "TakeOff Travel & Events",
             "priority": 1,
-            "replyto": [
-              {
-                "name": "TakeOff",
-                "email": "ahmadadra28@gmail.com"
-              }
-            ]
+
           }
 
           console.log("BEFORE SENDING", d);
@@ -289,29 +284,149 @@ export class DatabaseService {
     });
   }
 
+
   private constructEmailBody(formData: any): string {
     // Create an HTML email body with form field values
     const body = `
       <div>
-        <p>Name: ${formData.name}</p>
-        <p>Email: ${formData.email}</p>
-        <p>Phone: ${formData.phone}</p>
-        <p>From: ${formData.from}</p>
-        <p>To: ${formData.to}</p>
-        <p>Ticket Type: ${formData.ticketType}</p>
-        <p>Number of Travelers: ${formData.travelersNumber}</p>
-        <p>Date of Travel: ${formData.travelDate}</p>
-        <p>Return Date: ${formData.returnDate}</p>
-        <p>Added Services: ${formData.car ? 'Car' : ''} ${formData.visa ? 'Visa' : ''} ${formData.hotel ? 'Hotel' : ''}</p>
-        <p>Hotel Name: ${formData.hotelName}</p>
-        <p>Message: ${formData.message}</p>
+      <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;color: #3fbbc0">Name:</label> ${formData.name}
+  </div>
+
+  <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;color: #3fbbc0">Email:</label> ${formData.email}
+  </div>
+
+
+  <div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">Phone:</label> ${formData.phone}
+</div> 
+
+<div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">From:</label> ${formData.from}
+</div> 
+
+<div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">To:</label> ${formData.to}
+</div> 
+
+<div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">Ticket Type:</label> ${formData.ticketType}
+</div> 
+
+<div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">Travelers:</label> ${formData.travelersNumber}
+</div> 
+
+<div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">Date of Travel:</label> ${formData.travelDate}
+</div> 
+
+<div style="margin-bottom: 15px;">
+  <label style="font-weight: bold;color: #3fbbc0">Return Date:</label> ${formData.returnDate}
+</div> 
+
+
+
+<div style="margin-bottom: 15px;">
+            <label style="font-weight: bold;color: #3fbbc0">Added Services:</label>
+            
+            
+            <div>${formData.car ? 'Car' : ''}</div>
+            <div>${formData.visa ? 'Visa' : ''}</div>
+            <div>${formData.hotel ? 'Hotel' : ''} <label style="font-weight: normal;"> | ${formData.hotelName}</label>
+
+            </div>
+            
+            </div>
+
+      
+        <div style="margin-bottom: 15px;">
+        <label style="font-weight: bold;color: #3fbbc0">Message:</label> ${formData.message}
+      </div> 
+
       </div>
+
     `;
 
     return body;
   }
 
 
+  sendEmail2(formData2: any): Observable<any> {
+    return new Observable((observer) => {
+      console.log("SENDING EMAIL");
+
+      this.api('/_Emails', 'GET', {
+        "where": {
+          "Username": "info@gythan.com"
+        },
+        "fields": "Username,IncomingMS,OutgoingMS,IMAPPort,POP3,SMTP,Password"
+      })
+        .then(p => p.json())
+        .then(res => {
+          console.log('Sent:', res);
+          let d = {
+            "token": res.results[0].token,
+            "to": [
+              {
+                "name": "TakeOff Travel & Events",
+                "email": "sales@takeoff.com.sa"
+              }
+            ],
+            "body": this.constructEmailBody2(formData2),
+            "altbody": "Alt Body",
+            "subject": "New Message",
+            "sender": "TakeOff Travel & Events",
+            "priority": 1,
+
+          }
+
+          console.log("BEFORE SENDING", d);
+
+          this.api("/_Emails/send", "POST", d)
+            .then(p => p.json())
+            .then(response => {
+              // Assuming your API response contains data you want to emit
+              observer.next(response);
+              observer.complete();
+            })
+            .catch(error => {
+              observer.error(error);
+            });
+        })
+        .catch(error => {
+          observer.error(error);
+        });
+    });
+  }
+
+
+  private constructEmailBody2(formData2: any): string {
+    // Create an HTML email body with form field values
+    const body = `
+
+      <div>
+      <div>
+      <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;color: #3fbbc0">Name:</label> ${formData2.contactName}
+  </div>
+
+  <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;color: #3fbbc0">Email:</label> ${formData2.contactEmail}
+  </div>
+  <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;color: #3fbbc0">Subject:</label> ${formData2.contactSubject}
+  </div>
+
+      <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;color: #3fbbc0">Message:</label> ${formData2.contactMessage}
+    </div> 
+    </div>
+    `;
+
+    return body;
+  }
 
 
   ngOnChanges(changes: SimpleChanges) {
