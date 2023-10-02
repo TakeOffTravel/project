@@ -1,0 +1,299 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Profile</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item active">Profile</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        <img src="{{companies[0]?.images.untitled[0].dir}}{{companies[0]?.images.untitled[0].image}}"
+                            alt="Profile" class="rounded-circle">
+                        <h2>{{ companies[0]?.Name_localized[lan.toLowerCase()]}}</h2>
+                        <h3>{{companies[0]?.userName}}</h3>
+                        <!-- <div class="social-links mt-2">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#profile-overview">Overview</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit
+                                    Profile</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#profile-settings">Settings</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#profile-change-password">Change Password</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-2">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <!-- <h5 class="card-title">About</h5>
+                                <p class="small fst-italic">{{ overviewAbout }}</p> -->
+                                <h5 class="card-title">Profile Details</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Company Name</div>
+                                    <div class="col-lg-9 col-md-8">{{
+                                        companies[0]?.Name_localized[lan.toLowerCase()]}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Manager Name</div>
+                                    <div class="col-lg-9 col-md-8">{{
+                                        companies[0]?.Manager_localized[lan.toLowerCase()]}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Number</div>
+                                    <div class="col-lg-9 col-md-8">{{
+                                        companies[0]?.Number_localized[lan.toLowerCase()]}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                    <div class="col-lg-9 col-md-8">{{ companies[0]?.Email}}</div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Commercial Register</div>
+                                    <div class="col-lg-9 col-md-8">{{ companies[0]?.CR_localized[lan.toLowerCase()]}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">VAT Number</div>
+                                    <div class="col-lg-9 col-md-8">{{ companies[0]?.VATNb_localized[lan.toLowerCase()]}}
+                                    </div>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Password</div>
+                                    <div class="col-lg-9 col-md-8" *ngIf="!showPassword">{{ '******' }}</div>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Balance</div>
+                                    <div class="col-lg-9 col-md-8">{{ companies[0]?.Balance}}</div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                                <!-- Profile Edit Form -->
+                                <form [formGroup]="profileEditForm" (ngSubmit)="saveChanges()">
+                                    <div class="row mb-3">
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
+                                            Image</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="{{companies[0]?.images.untitled[0].dir}}{{companies[0]?.images.untitled[0].image}}"
+                                                alt="Profile">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-primary btn-sm"
+                                                    title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm"
+                                                    title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- About -->
+                                    <!-- <div class="row mb-3">
+                                        <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <textarea formControlName="about" class="form-control" id="about"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('about')?.invalid && profileEditForm.get('about')?.touched}"></textarea>
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('about')?.hasError('required')">
+                                                About is required
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- Company -->
+                                    <div class="row mb-3">
+                                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="company" type="text" class="form-control"
+                                                id="company"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('company')?.invalid && profileEditForm.get('company')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('company')?.hasError('required')">
+                                                Company is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Manager Name -->
+                                    <div class="row mb-3">
+                                        <label for="managerName" class="col-md-4 col-lg-3 col-form-label">Manager
+                                            Name</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="managerName" type="text" class="form-control"
+                                                id="managerName"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('managerName')?.invalid && profileEditForm.get('managerName')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('managerName')?.hasError('required')">
+                                                Manager Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Number -->
+                                    <div class="row mb-3">
+                                        <label for="number" class="col-md-4 col-lg-3 col-form-label">Phone
+                                            Number</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="number" type="number" class="form-control"
+                                                id="number"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('number')?.invalid && profileEditForm.get('number')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('number')?.hasError('required')">
+                                                Phone Number is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="row mb-3">
+                                        <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="email" type="text" class="form-control" id="email"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('email')?.invalid && profileEditForm.get('email')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('email')?.hasError('required')">
+                                                Email are required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- CR -->
+                                    <div class="row mb-3">
+                                        <label for="cr" class="col-md-4 col-lg-3 col-form-label">Commercial
+                                            Register</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="cr" type="text" class="form-control" id="cr"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('cr')?.invalid && profileEditForm.get('cr')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('cr')?.hasError('required')">
+                                                Commercial Register number is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- VAT Number -->
+                                    <div class="row mb-3">
+                                        <label for="vatNumber" class="col-md-4 col-lg-3 col-form-label">VAT
+                                            Number</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="vatNumber" type="number" class="form-control"
+                                                id="vatNumber"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('vatNumber')?.invalid && profileEditForm.get('vatNumber')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('vatNumber')?.hasError('required')">
+                                                VAT Number is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Password -->
+                                    <!-- <div class="row mb-3">
+                                        <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="password" type="password" class="form-control"
+                                                id="password"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('password')?.invalid && profileEditForm.get('password')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('password')?.hasError('required')">
+                                                Password is required
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- Balance -->
+                                    <div class="row mb-3">
+                                        <label for="balance" class="col-md-4 col-lg-3 col-form-label">Balance</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="balance" type="number" class="form-control"
+                                                id="balance"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('balance')?.invalid && profileEditForm.get('balance')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('balance')?.hasError('required')">
+                                                Balance Number is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+                            </div>
+
+
+                            <div class="tab-pane fade pt-3" id="profile-change-password">
+                                <!-- Change Password Form -->
+                                <form (ngSubmit)="changePassword()">
+                                    <div class="row mb-3">
+                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current
+                                            Password</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="currentPassword" type="password" class="form-control"
+                                                id="currentPassword" [(ngModel)]="currentPassword" required>
+                                            <!-- Display error message if currentPasswordError is true -->
+                                            <div *ngIf="currentPasswordError" class="text-danger">Current password is
+                                                incorrect or empty.</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- New Password -->
+                                    <div class="row mb-3">
+                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New
+                                            Password</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="newPassword" type="password" class="form-control"
+                                                id="newPassword" [(ngModel)]="newPassword" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Re-enter New Password -->
+                                    <div class="row mb-3">
+                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New
+                                            Password</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="renewPassword" type="password" class="form-control"
+                                                id="renewPassword" [(ngModel)]="renewPassword" required>
+                                            <!-- Display error message if passwords do not match -->
+                                            <div *ngIf="newPassword !== renewPassword" class="text-danger">Passwords do
+                                                not match.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Change Password</button>
+                                    </div>
+                                </form><!-- End Change Password Form -->
+                            </div>
+
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>

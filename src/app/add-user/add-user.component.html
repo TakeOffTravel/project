@@ -1,0 +1,238 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Add Company User</h1>
+
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#profile-edit">Company Information</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#profile-settings">Settings</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-2">
+
+
+                            <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                                <!-- Profile Edit Form -->
+                                <form [formGroup]="profileEditForm">
+                                    <div class="row mb-3">
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
+                                            Image</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="" alt="Profile">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-primary btn-sm"
+                                                    title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm"
+                                                    title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- About -->
+                                    <!-- <div class="row mb-3">
+                                        <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <textarea formControlName="about" class="form-control" id="about"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('about')?.invalid && profileEditForm.get('about')?.touched}"></textarea>
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('about')?.hasError('required')">
+                                                About is required
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+
+
+                                    <!-- UserName -->
+                                    <div class="row mb-3">
+                                        <label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="userName" type="text" class="form-control"
+                                                id="userName"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('userName')?.invalid && profileEditForm.get('userName')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('userName')?.hasError('required')">
+                                                UserName is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Password -->
+                                    <div class="row mb-3">
+                                        <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="password" type="password" class="form-control"
+                                                id="password"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('password')?.invalid && profileEditForm.get('password')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('password')?.hasError('required')">
+                                                Password is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Company -->
+                                    <div class="row mb-3">
+                                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="company" type="text" class="form-control"
+                                                id="company"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('company')?.invalid && profileEditForm.get('company')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('company')?.hasError('required')">
+                                                Company is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Manager Name -->
+                                    <div class="row mb-3">
+                                        <label for="managerName" class="col-md-4 col-lg-3 col-form-label">Manager
+                                            Name</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="managerName" type="text" class="form-control"
+                                                id="managerName"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('managerName')?.invalid && profileEditForm.get('managerName')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('managerName')?.hasError('required')">
+                                                Manager Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Number -->
+                                    <div class="row mb-3">
+                                        <label for="number" class="col-md-4 col-lg-3 col-form-label">Phone
+                                            Number</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="number" type="number" class="form-control"
+                                                id="number"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('number')?.invalid && profileEditForm.get('number')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('number')?.hasError('required')">
+                                                Phone Number is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="row mb-3">
+                                        <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="email" type="text" class="form-control" id="email"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('email')?.invalid && profileEditForm.get('email')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('email')?.hasError('required')">
+                                                Email are required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- CR -->
+                                    <div class="row mb-3">
+                                        <label for="cr" class="col-md-4 col-lg-3 col-form-label">Commercial
+                                            Register</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="cr" type="text" class="form-control" id="cr"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('cr')?.invalid && profileEditForm.get('cr')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('cr')?.hasError('required')">
+                                                Commercial Register number is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- VAT Number -->
+                                    <div class="row mb-3">
+                                        <label for="vatNumber" class="col-md-4 col-lg-3 col-form-label">VAT
+                                            Number</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="vatNumber" type="number" class="form-control"
+                                                id="vatNumber"
+                                                [ngClass]="{'is-invalid': profileEditForm.get('vatNumber')?.invalid && profileEditForm.get('vatNumber')?.touched}">
+                                            <div class="invalid-feedback text-danger"
+                                                *ngIf="profileEditForm.get('vatNumber')?.hasError('required')">
+                                                VAT Number is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Balance -->
+                                    <div class="row mb-3">
+                                        <label for="balance" class="col-md-4 col-lg-3 col-form-label">Balance</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input formControlName="balance" type="number" class="form-control"
+                                                id="balance">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+                            </div>
+
+                            <div class="tab-pane fade pt-3" id="profile-settings">
+
+                                <!-- Settings Form -->
+                                <form>
+
+                                    <div class="row mb-3">
+                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email
+                                            Notifications</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="changesMade"
+                                                    checked>
+                                                <label class="form-check-label" for="changesMade">
+                                                    Changes made to your account
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="newProducts"
+                                                    checked>
+                                                <label class="form-check-label" for="newProducts">
+                                                    Information on new products and services
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="proOffers">
+                                                <label class="form-check-label" for="proOffers">
+                                                    Marketing and promo offers
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="securityNotify"
+                                                    checked disabled>
+                                                <label class="form-check-label" for="securityNotify">
+                                                    Security alerts
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form><!-- End settings Form -->
+
+                            </div>
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>

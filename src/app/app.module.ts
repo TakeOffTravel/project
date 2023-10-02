@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseService } from '../app/database.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CoProfileComponent } from './co-profile/co-profile.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     SafePipe,
     HomeComponent,
     LoginComponent,
+    CoProfileComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [DatabaseService],
   bootstrap: [AppComponent]

@@ -16,6 +16,7 @@ export class DatabaseService {
     offersCats: [],
     trend: [],
     offSwiper: [],
+    companies: [],
   }
   private allData = new BehaviorSubject<any>(this.data);
   myData = this.allData.asObservable();
@@ -147,6 +148,17 @@ export class DatabaseService {
             media: "images"
           },
           method: "get",
+        },
+
+        {
+          path: "/Companies",
+          body: {
+            fields: "userName,Password,Name,Manager,Number,Email,CR,VATNb,Balance",
+            locale: "En,Ar",
+            limit: -1,
+            media: "images"
+          },
+          method: "get",
         }
       ]
     })
@@ -219,6 +231,10 @@ export class DatabaseService {
         this.data.offersCats = data[5].results;
 
         this.data.trend = data[6].results;
+
+        console.log('com:', data[7]);
+        this.data.companies = data[7].results;
+
 
         this.changeData(this.data);
 

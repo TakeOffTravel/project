@@ -75,58 +75,63 @@ export class HomeComponent implements OnInit {
     this.minReturnDate = travelDateValue;
   }
 
+
   onSubmit() {
     if (this.submitted) {
       return; // Prevent multiple submissions
     }
+
     this.submitted = true;
 
     if (this.myForm.invalid) {
+      // Mark all form controls as touched to trigger validation messages
       Object.values(this.myForm.controls).forEach((control: AbstractControl) => {
         control.markAsTouched();
       });
+
       this.submitted = false; // Re-enable the submit button
       return;
-
-    } else {
-
-      // Collect form data
-      const formData = this.myForm.value;
-
-      // Disable the submit button
-      const submitButton = document.getElementById('submit-button');
-      if (submitButton) {
-        submitButton.setAttribute('disabled', 'true');
-      }
-
-
-      // Call the sendEmail function from the DatabaseService with the form data
-      this.dbService.sendEmail(formData).subscribe(
-        (response) => {
-          // Reset the form
-          const ticketTypeValue = this.myForm.get('ticketType')?.value;
-          this.showSuccessMessage();
-          this.myForm.reset();
-          this.myForm.get('ticketType')?.setValue(ticketTypeValue);
-          this.submitted = false;
-          if (submitButton) {
-            submitButton.removeAttribute('disabled');
-          }
-
-          // Handle success, e.g., show a success message to the user
-
-        },
-        (error) => {
-          console.error('Error sending email', error);
-          this.ErrorMessage();
-          // Re-enable the submit button immediately in case of an error
-          if (submitButton) {
-            submitButton.removeAttribute('disabled');
-          }
-
-        }
-      );
     }
+
+    // Collect form data
+    const formData = this.myForm.value;
+
+    // Disable the submit button
+    const submitButton = document.getElementById('submit-button');
+    if (submitButton) {
+      submitButton.setAttribute('disabled', 'true');
+    }
+
+    // Call the sendEmail function from the DatabaseService with the form data
+    this.dbService.sendEmail(formData).subscribe(
+      (response) => {
+        console.log('Email sent successfully', response);
+        // Handle success, e.g., show a success message to the user
+        this.showSuccessMessage();
+
+        // Reset the form after a short delay (e.g., 2 seconds)
+        setTimeout(() => {
+          this.myForm.reset();
+          this.myForm.get('ticketType')?.setValue(formData.ticketType);
+          this.submitted = false;
+
+          // Re-enable the submit button
+          if (submitButton) {
+            submitButton.removeAttribute('disabled');
+          }
+        }, 2000); // Adjust the delay as needed
+      },
+      (error) => {
+        console.error('Error sending email', error);
+        // Handle error, e.g., show an error message to the user
+        this.submitted = false; // Re-enable the submit button
+
+        // Re-enable the submit button immediately in case of an error
+        if (submitButton) {
+          submitButton.removeAttribute('disabled');
+        }
+      }
+    );
   }
 
   showSuccessMessage() {
